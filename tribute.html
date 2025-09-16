@@ -5,109 +5,463 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>Tribute to Quaid-e-Azam</title>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      margin: 0;
-      padding: 0;
-      text-align: center;
-      background-color: #f9f9f9;
-      color: #333;
+    :root {
+      --primary-color: #0D47A1;
+      --secondary-color: #1976D2;
+      --accent-color: #FFC107;
+      --text-color: #333;
+      --light-bg: #f8f9fa;
+      --white: #ffffff;
+      --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
     }
 
-    #main {
-      padding: 20px;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      color: var(--text-color);
+      background-color: var(--light-bg);
+      overflow-x: hidden;
+    }
+
+    /* Header Styles */
+    header {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: var(--white);
+      padding: 3rem 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none"/><path d="M0,0 L100,100 M100,0 L0,100" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></svg>');
+      background-size: 20px 20px;
+      opacity: 0.3;
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 1;
       max-width: 900px;
-      margin: auto;
+      margin: 0 auto;
+      padding: 0 20px;
     }
 
     #title {
-      font-size: 2.2rem;
-      margin-bottom: 15px;
-      color: #004080;
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+      animation: fadeInDown 1s ease;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      font-weight: 300;
+      max-width: 700px;
+      margin: 0 auto;
+      animation: fadeInUp 1s ease;
+    }
+
+    /* Main Container */
+    main {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 20px;
+    }
+
+    /* Image Section */
+    .image-section {
+      margin: 3rem auto;
+      max-width: 800px;
+      animation: fadeIn 1.5s ease;
     }
 
     #img-div {
-      margin: 20px auto;
-      background: #fff;
-      padding: 15px;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-      max-width: 700px;
+      background: var(--white);
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    #img-div:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
     }
 
     #image {
-      max-width: 100%;
+      width: 100%;
       height: auto;
       display: block;
-      margin: auto;
-      border-radius: 6px;
+      transition: var(--transition);
+    }
+
+    #img-div:hover #image {
+      transform: scale(1.02);
     }
 
     #img-caption {
-      margin-top: 10px;
-      font-size: 0.95rem;
+      padding: 1.5rem;
+      font-size: 1rem;
       color: #555;
+      text-align: center;
+      font-style: italic;
+      background: linear-gradient(to right, rgba(25, 118, 210, 0.05), rgba(13, 71, 161, 0.05));
     }
 
-    #tribute-info {
-      margin: 30px auto;
-      text-align: left;
-      max-width: 800px;
+    /* Content Sections */
+    .content-section {
+      background: var(--white);
+      border-radius: 15px;
+      padding: 2.5rem;
+      margin-bottom: 2.5rem;
+      box-shadow: var(--shadow);
+      animation: fadeInUp 1.5s ease;
+      transition: var(--transition);
+    }
+
+    .content-section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      color: var(--primary-color);
+      margin-bottom: 1.5rem;
+      position: relative;
+      padding-bottom: 0.75rem;
+    }
+
+    h2::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 80px;
+      height: 3px;
+      background: var(--accent-color);
+    }
+
+    h3 {
+      font-size: 1.6rem;
+      color: var(--secondary-color);
+      margin: 2rem 0 1rem;
+    }
+
+    p {
+      margin-bottom: 1.5rem;
+      font-size: 1.05rem;
+    }
+
+    strong {
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+
+    /* Timeline */
+    .timeline {
+      position: relative;
+      margin: 2rem 0;
+      padding-left: 2rem;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 1.5rem;
+      padding-left: 2rem;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -5px;
+      top: 5px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--accent-color);
+      border: 2px solid var(--white);
+      box-shadow: 0 0 0 2px var(--primary-color);
+    }
+
+    .timeline-item strong {
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      text-align: center;
+      margin: 3rem 0;
+      animation: fadeIn 2s ease;
     }
 
     #tribute-link {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 10px 18px;
-      background-color: #004080;
-      color: white;
+      display: inline-flex;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: var(--white);
       text-decoration: none;
-      border-radius: 5px;
+      border-radius: 50px;
+      font-weight: 500;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 15px rgba(25, 118, 210, 0.3);
+      transition: var(--transition);
     }
 
     #tribute-link:hover {
-      background-color: #0066cc;
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(25, 118, 210, 0.4);
+    }
+
+    #tribute-link i {
+      margin-left: 10px;
+      transition: var(--transition);
+    }
+
+    #tribute-link:hover i {
+      transform: translateX(5px);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--primary-color);
+      color: var(--white);
+      text-align: center;
+      padding: 2rem 0;
+      margin-top: 4rem;
+    }
+
+    .footer-content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .footer-content p {
+      margin: 0;
+      font-size: 0.9rem;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      #title {
+        font-size: 2.2rem;
+      }
+
+      .content-section {
+        padding: 1.8rem;
+      }
+
+      h2 {
+        font-size: 1.8rem;
+      }
+
+      h3 {
+        font-size: 1.4rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+
+      .timeline {
+        padding-left: 1.5rem;
+      }
+
+      .timeline-item {
+        padding-left: 1.5rem;
+      }
+    }
+
+    @media (max-width: 576px) {
+      #title {
+        font-size: 1.8rem;
+      }
+
+      .subtitle {
+        font-size: 1rem;
+      }
+
+      .content-section {
+        padding: 1.5rem;
+      }
+
+      h2 {
+        font-size: 1.6rem;
+      }
+
+      .timeline {
+        padding-left: 1rem;
+      }
+
+      .timeline-item {
+        padding-left: 1rem;
+      }
     }
   </style>
 </head>
 <body>
-  <main id="main">
-    <h1 id="title">Quaid-e-Azam Muhammad Ali Jinnah</h1>
-
-    <div id="img-div">
-      <img id="image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Muslim_League_leaders_after_a_dinner_party%2C_1940_%28Photo_429-6%29.jpg/500px-Muslim_League_leaders_after_a_dinner_party%2C_1940_%28Photo_429-6%29.jpg" alt="Quaid-e-Azam Muhammad Ali Jinnah">
-      <p id="img-caption">The leaders of the Muslim League, 1940. Jinnah is seated at centre.</p>
+  <header>
+    <div class="header-content">
+      <h1 id="title">Quaid-e-Azam Muhammad Ali Jinnah</h1>
+      <p class="subtitle">The founding father of Pakistan and a visionary leader who changed the course of history</p>
     </div>
+  </header>
 
-    <section id="tribute-info">
+  <main>
+    <section class="image-section">
+      <div id="img-div">
+        <img id="image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Muslim_League_leaders_after_a_dinner_party%2C_1940_%28Photo_429-6%29.jpg/500px-Muslim_League_leaders_after_a_dinner_party%2C_1940_%28Photo_429-6%29.jpg" alt="Quaid-e-Azam Muhammad Ali Jinnah">
+        <p id="img-caption">The leaders of the Muslim League, 1940. Jinnah is seated at centre.</p>
+      </div>
+    </section>
+
+    <section class="content-section">
       <h2>About Quaid-e-Azam</h2>
       <p>
-        Muhammad Ali Jinnah (1876 – 1948), known as Quaid-e-Azam (“Great Leader”), was the founding father of Pakistan. 
+        Muhammad Ali Jinnah (1876 – 1948), known as Quaid-e-Azam ("Great Leader"), was the founding father of Pakistan. 
         Born in Karachi, he studied law in London before becoming a prominent leader in the Indian National Congress and later the All-India Muslim League. 
-        His political vision, leadership, and determination led to the creation of Pakistan in 1947, where he served as the nation’s first Governor-General until his death in 1948.
-      </p>
-
-      <h3>Key Highlights of His Life</h3>
-      <ul>
-        <li><strong>1876:</strong> Born in Karachi,Pakistan</li>
-        <li><strong>1892–1896:</strong> Studied law at Lincoln’s Inn, London.</li>
-        <li><strong>1906:</strong> Joined Indian National Congress, advocating for Hindu-Muslim unity.</li>
-        <li><strong>1913:</strong> Joined All-India Muslim League, working for Muslim rights.</li>
-        <li><strong>1940:</strong> Lahore Resolution, calling for separate Muslim homeland.</li>
-        <li><strong>1947:</strong> Achieved the creation of Pakistan; became first Governor-General.</li>
-        <li><strong>1948:</strong> Passed away in Karachi, remembered as “Father of the Nation.”</li>
-      </ul>
-
-      <p>
-        Jinnah’s leadership established Pakistan as a sovereign nation and he is honored as a visionary statesman who united millions of Muslims under the demand for independence.
+        His political vision, leadership, and determination led to the creation of Pakistan in 1947, where he served as the nation's first Governor-General until his death in 1948.
       </p>
     </section>
 
-    <a id="tribute-link" href="https://en.wikipedia.org/wiki/Muhammad_Ali_Jinnah" target="_blank">
-      Learn more about Quaid-e-Azam
-    </a>
+    <section class="content-section">
+      <h2>Modern Reflections on Quaid's Vision</h2>
+      <p>
+        Quaid-e-Azam Muhammad Ali Jinnah dreamed of a Pakistan based on <strong>democracy, equality, religious freedom, and justice</strong>. 
+        Over the decades, many leaders and movements have claimed to follow his path, but his vision remains a work in progress.
+      </p>
+      <p>
+        One prominent figure in recent times is <strong>Imran Khan</strong>, former Prime Minister of Pakistan. 
+        He emphasized the idea of a <em>welfare state (Riyasat-e-Madina)</em>, anti-corruption reforms, and youth empowerment, 
+        which resonate with parts of Jinnah's ideals. Supporters see him as carrying Quaid's spirit of integrity and social justice, 
+        while critics argue that challenges in governance and political division show how far Pakistan still has to go to fully realize Jinnah's dream.
+      </p>
+      <p>
+        Today, Imran Khan is <strong>imprisoned</strong> due to ongoing legal cases. 
+        Many of his supporters believe this is part of his struggle for a corruption-free and just Pakistan, a continuation of Quaid's vision for an independent and fair state. 
+        His critics, however, see it as a matter of legal accountability. 
+      </p>
+      <p>
+        Jinnah's vision continues to live on not just in politics but in the <strong>hopes of the people</strong>—students, reformers, innovators, 
+        and citizens striving for a more inclusive, democratic, and prosperous Pakistan.
+      </p>
+    </section>
+
+    <section class="content-section">
+      <h2>Key Highlights of His Life</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <strong>1876</strong>
+          Born in Karachi, Pakistan
+        </div>
+        <div class="timeline-item">
+          <strong>1892–1896</strong>
+          Studied law at Lincoln's Inn, London.
+        </div>
+        <div class="timeline-item">
+          <strong>1906</strong>
+          Joined Indian National Congress, advocating for Hindu-Muslim unity.
+        </div>
+        <div class="timeline-item">
+          <strong>1913</strong>
+          Joined All-India Muslim League, working for Muslim rights.
+        </div>
+        <div class="timeline-item">
+          <strong>1940</strong>
+          Lahore Resolution, calling for separate Muslim homeland.
+        </div>
+        <div class="timeline-item">
+          <strong>1947</strong>
+          Achieved the creation of Pakistan; became first Governor-General.
+        </div>
+        <div class="timeline-item">
+          <strong>1948</strong>
+          Passed away in Karachi, remembered as "Father of the Nation."
+        </div>
+      </div>
+      <p>
+        Jinnah's leadership established Pakistan as a sovereign nation and he is honored as a visionary statesman who united millions of Muslims under the demand for independence.
+      </p>
+    </section>
+
+    <section class="cta-section">
+      <a id="tribute-link" href="https://en.wikipedia.org/wiki/Muhammad_Ali_Jinnah" target="_blank">
+        Learn more about Quaid-e-Azam
+        <i class="fas fa-arrow-right"></i>
+      </a>
+    </section>
   </main>
+
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2023 Tribute to Quaid-e-Azam Muhammad Ali Jinnah | Honoring the Father of the Nation</p>
+    </div>
+  </footer>
 </body>
 </html>
